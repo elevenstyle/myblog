@@ -16,8 +16,6 @@ import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.elevenstyle.service.CustomUserService;
-
 /** 
  * @author lijie
  * @date 2016年9月5日 
@@ -39,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private CustomPersistentTokenRepository customPersistentTokenRepository;
 	@Autowired
-	private CustomUserService customUserService;
+	private CustomUserDetailService customUserService;
 	
 	//用户认证
 	@Override

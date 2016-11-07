@@ -1,4 +1,4 @@
-package com.elevenstyle.service;
+package com.elevenstyle.util.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.elevenstyle.model.Role;
 import com.elevenstyle.model.User;
+import com.elevenstyle.service.RoleService;
+import com.elevenstyle.service.UserService;
 
 /** 
  * @author lijie
@@ -24,7 +26,7 @@ import com.elevenstyle.model.User;
 @Service
 @Transactional
 @Scope("prototype")
-public class CustomUserService implements UserDetailsService{
+public class CustomUserDetailService implements UserDetailsService{
 	
 	@Autowired
 	UserService userService;

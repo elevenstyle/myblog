@@ -2,6 +2,9 @@ package com.elevenstyle.util.config;
 
 import java.util.Collection;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import com.elevenstyle.service.CustomUserService;
 
 /**
  * 登陆自定义认证
@@ -26,7 +28,7 @@ import com.elevenstyle.service.CustomUserService;
 public class CustomAuthenticationProvider implements AuthenticationProvider{
 	
 	@Autowired
-	private CustomUserService customUserService;
+	private CustomUserDetailService customUserService;
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

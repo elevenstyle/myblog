@@ -28,6 +28,13 @@
     .header p {
       font-size: 14px;
     }
+    footer {
+    background-color:rgba(0,0,0,0.5);
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    }
   </style>
 </head>
 <body>
@@ -63,7 +70,7 @@
   <div class="am-u-sm-6" style="margin: 85px; width: 400px; padding: 60px;">
     <h3>&nbsp;&nbsp;&nbsp;登录</h3>
     <hr>
-     <span th:text="${msg}">v</span>
+     	<p th:if="${param.error}" class="bg-danger">账号或密码错误！</p>
     <br/>
 
     <form th:action="@{/login}" method="post" class="am-form ">
@@ -72,7 +79,6 @@
       <br/>
       <label for="password"><i class="am-icon-bookmark-o"></i>&nbsp;密码:</label>
       <input type="password" name="password" id="password" data-rule="密码:required;password;" value="" style= "background-color:transparent" placeholder="输入密码"/>
-      <span style="color:red; " th:text="${error}">v</span>
       <br/>
       <label for="remember-me">
         <input id="remember-me" type="checkbox"/>
@@ -87,7 +93,7 @@
 	</hr>
   </div>
   </div>
-  <footer data-am-widget="footer"
+    <footer data-am-widget="footer"
           class="am-footer am-footer-default"
            data-am-footer="{  }" >
     <div class="am-footer-switch">

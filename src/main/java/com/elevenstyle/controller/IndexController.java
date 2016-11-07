@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +38,18 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/index")
-	public String indexs() {
+	public String index(HttpSession session, HttpServletRequest request, Model mode) {
+		try {
+		//获取认证用户信息
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
+			if(userDetails!=null) {
+				String email = userDetails.getUsername();
+				User user = userService.getUserInfo(email);
+				session.setAttribute("userId", user.getId());
+			}
+		} catch (Exception e) {
+			return "index";
+		}
 		return "index";
 	}
 	
