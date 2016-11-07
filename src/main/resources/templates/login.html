@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<head lang="cn">
   <meta charset="UTF-8"/>
   <title>登录 | Eleven_码农之路e</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/amazeui.min.css"/>
   <link rel="stylesheet" href="css/jquery.validator.css" />
   <style>
-  	body {background-image: url("image/backgrounp/login.jpg");
+  	body {background-image: url("/image/backgrounp/login.jpg");
   	background-repeat: repeat;
   	background-position: 50% 50%
   	}
@@ -46,21 +46,10 @@
 
     <div class="am-collapse am-topbar-collapse" id="collapse-head">
       <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li><a href="index.html"><span class="am-icon-desktop"></span>&nbsp;首页</a></li>
+        <li><a href="/index.html"><span class="am-icon-desktop"></span>&nbsp;首页</a></li>
         <li><a href="#"><span class="am-icon-file-text "></span>&nbsp;博文</a></li>
         <li><a href="#"><span class="am-icon-bookmark"></span>&nbsp;收藏</a></li>
       </ul>
-     <!-- 
-      <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" role="search">
-      <div class="am-form-group">
-        <input type="text" class="am-form-field am-input-sm" placeholder="搜索文章"/>
-      </div>
-      <a href="login.html" class="am-btn am-btn-sm search"><i class="am-icon-search"></i>&nbsp;搜索</a>
-      <a href="login.html" class="am-btn am-btn-sm login" th:if="${session.role}!=5"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
-	  <a href="/manager/user.html" class="am-btn am-btn-sm user" th:if="${session.role}==5" th:text="'欢迎你：'+${session.name}"></a>
-	  <a href="cancel.html" class="am-btn am-btn-sm cancel" th:if="${session.role}==5"><i class="am-icon-arrow-circle-right"></i>&nbsp;注销 </a>
-    </form>
-     -->
      	<div class="am-topbar-form am-topbar-left am-form-inline am-topbar-right">
      <a href="login.html" class="am-btn am-btn-sm login" th:if="${session.role}!=5"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
      <a href="register.html" class="am-btn am-btn-sm cancel" th:if="${session.role}!=5"><i class="am-icon-user-plus"></i>&nbsp;注册 </a>
@@ -74,21 +63,16 @@
   <div class="am-u-sm-6" style="margin: 85px; width: 400px; padding: 60px;">
     <h3>&nbsp;&nbsp;&nbsp;登录</h3>
     <hr>
-    <!-- 
-    <div class="am-btn-group">
-      <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i> Github</a>
-      <a href="#" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-google-plus-square am-icon-sm"></i> Google+</a>
-      <a href="#" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-stack-overflow am-icon-sm"></i> stackOverflow</a>
-    </div>
-    -->
+     <span th:text="${msg}">v</span>
     <br/>
 
-    <form method="post" action="login" class="am-form ">
+    <form th:action="@{/login}" method="post" class="am-form ">
       <label for="email"><i class="am-icon-envelope-o"></i>&nbsp;邮箱:</label>
-      <input type="email" name="name" id="email" value="" data-rule="用户名:required;email;" placeholder="输入邮箱" style="background-color:transparent"/>
+      <input type="email" name="email" id="email" value="" data-rule="用户名:required;email;" placeholder="输入邮箱" style="background-color:transparent"/>
       <br/>
       <label for="password"><i class="am-icon-bookmark-o"></i>&nbsp;密码:</label>
       <input type="password" name="password" id="password" data-rule="密码:required;password;" value="" style= "background-color:transparent" placeholder="输入密码"/>
+      <span style="color:red; " th:text="${error}">v</span>
       <br/>
       <label for="remember-me">
         <input id="remember-me" type="checkbox"/>
@@ -96,8 +80,8 @@
       </label>
       <br />
       <div class="am-cf">
-        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl"/>
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr"/>
+        <input type="submit" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl"/>
+        <input type="submit" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr"/>
       </div>
     </form>
 	</hr>

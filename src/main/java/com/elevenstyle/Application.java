@@ -1,7 +1,7 @@
 package com.elevenstyle;
 
+import javax.servlet.MultipartConfigElement;
 import javax.sql.DataSource;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -9,6 +9,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -29,6 +30,14 @@ public class Application {
 	public DataSource dataSource() {
 		return new org.apache.tomcat.jdbc.pool.DataSource();
 	}
+	
+//	@Bean  
+//	public MultipartConfigElement multipartConfigElement() {  
+//	        MultipartConfigFactory factory = new MultipartConfigFactory();  
+//	        factory.setMaxFileSize("4096KB");  
+//	        factory.setMaxRequestSize("5120KB");  
+//	        return factory.createMultipartConfig();  
+//	    }  
 	
 	//提供SqlSession
 	 @Bean
