@@ -116,10 +116,10 @@
       <div class="am-form-group">
         <input type="text" class="am-form-field am-input-sm" placeholder="搜索文章"/>
       </div>
-      <a href="login.html" class="am-btn am-btn-sm search"><i class="am-icon-search"></i>&nbsp;搜索</a>
-      <a href="login.html" class="am-btn am-btn-sm login" th:if="${session.role}!=5"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
-	  <a href="/manager/user.html" class="am-btn am-btn-sm user" th:if="${session.role}==5" th:text="'欢迎你：'+${session.name}"></a>
-	  <a href="cancel.html" class="am-btn am-btn-sm cancel" th:if="${session.role}==5"><i class="am-icon-external-link"></i>&nbsp;注销 </a>
+      <a href="search.html" class="am-btn am-btn-sm search"><i class="am-icon-search"></i>&nbsp;搜索</a>
+      <a href="login.html" class="am-btn am-btn-sm login" sec:authorize ="!hasRole('ROLE_ADMIN')"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
+	  <a href="/manager/user.html" class="am-btn am-btn-sm user" sec:authorize="hasRole('ROLE_ADMIN')" th:text="${#authentication.name}"></a>
+	  <a href="logout" class="am-btn am-btn-sm cancel" sec:authorize="hasRole('ROLE_ADMIN')"><i class="am-icon-external-link"></i>&nbsp;注销 </a>
     </form>
     </div>
   </div>
@@ -171,8 +171,8 @@
 			<button class="am-btn am-btn-default am-round" data-am-collapse="{target: '#collapse-nav'}">导航栏 <i class="am-icon-bars"></i></button>
 		<nav>
   		<ul id="collapse-nav" class="am-nav am-collapse am-round">
-  			<li><a href="">发表文章</a></li>
-    		<li><a href="add.html">最近更新</a></li>
+  			<li><a href="add.html">发表文章</a></li>
+    		<li><a href="">最近更新</a></li>
     		<li><a href="">热门资讯</a></li>
     		<li><a href=""><i class="am-icon-info-circle"></i>&nbsp;关于我</a></li>
     		<li><a href="">留言板</a></li>

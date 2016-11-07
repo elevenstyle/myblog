@@ -27,12 +27,19 @@
     .header p {
       font-size: 14px;
     }
+    footer {
+    background-color:rgba(0,0,0,0.5);
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    }
   </style>
-</head>
-<body>
  <script type="text/javascript" src="js/jquery.min.js"></script>
  <script type="text/javascript" src="js/jquery.validator.js" ></script>
  <script type="text/javascript" src="js/local/zh-CN.js" ></script>
+</head>
+<body>
 <header class="am-topbar am-topbar-fixed-top">
   <div style="margin-left: 65px;" class="am-container">
     <h1 class="am-topbar-brand">
@@ -49,17 +56,6 @@
         <li><a href="#"><span class="am-icon-file-text "></span>&nbsp;博文</a></li>
         <li><a href="#"><span class="am-icon-bookmark"></span>&nbsp;收藏</a></li>
       </ul>
-     <!-- 
-      <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" role="search">
-      <div class="am-form-group">
-        <input type="text" class="am-form-field am-input-sm" placeholder="搜索文章"/>
-      </div>
-      <a href="login.html" class="am-btn am-btn-sm search"><i class="am-icon-search"></i>&nbsp;搜索</a>
-      <a href="login.html" class="am-btn am-btn-sm login" th:if="${session.role}!=5"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
-	  <a href="/manager/user.html" class="am-btn am-btn-sm user" th:if="${session.role}==5" th:text="'欢迎你：'+${session.name}"></a>
-	  <a href="cancel.html" class="am-btn am-btn-sm cancel" th:if="${session.role}==5"><i class="am-icon-arrow-circle-right"></i>&nbsp;注销 </a>
-    </form>
-     -->
      	<div class="am-topbar-form am-topbar-left am-form-inline am-topbar-right">
      <a href="login.html" class="am-btn am-btn-sm login" th:if="${session.role}!=5"><i class="am-icon-arrow-circle-right"></i>&nbsp;登录</a>
      <a href="register.html" class="am-btn am-btn-sm cancel" th:if="${session.role}!=5"><i class="am-icon-user-plus"></i>&nbsp;注册 </a>
@@ -68,16 +64,20 @@
   </div>
 </header>
 <div class="am-g">
-
+	<h5 th:text="${msg}">v</h5>
   <div class="am-u-sm-6">123</div>
   <div class="am-u-sm-6" style="margin: 85px; width: 400px; padding: 60px;">
     <h3>&nbsp;&nbsp;&nbsp;注册</h3>
     <hr>
+    
     <br/>
-
-   <form name="register" action="toregister" class="am-form" method="post">
-
-
+	
+   <form name="register" th:action="@{/toregister}" class="am-form" method="post" enctype="multipart/form-data">
+   <!--  
+	  <label for="doc-vld-name-2-1">头像：</label>
+	  <img src="" id="img0" class="showupdatepic"/><br/>
+	  <input type="file" name="file" id="file" />
+	  -->
       <label for="doc-vld-name-2-1">昵称：</label>
       <input type="text" name="nickname" data-rule="昵称:required;nickname;length[3~]" style= "background-color:transparent" placeholder="输入昵称（至少 3个字符）" />
 
@@ -115,6 +115,33 @@
         <p>京ICP备13033158</p>
     </div>
  </footer>
+ 
+ <script type="text/javascript">
+ function upload(obj){
+		photoExt=obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+		$("#picture").val("");
+		
+	};
+	$("#file").change(function(){
+		var objUrl = getObjectURL(this.files[0]) ;
+		console.log("objUrl = "+objUrl) ;
+		if (objUrl) {
+			$("#img0").attr("src", objUrl) ;
+		}
+	});
+	//建立一個可存取到該file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	};
+ </script>
 
 </body>
 </html>
