@@ -31,6 +31,46 @@
  	</update>
  
  	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.Article">
+ 	  select * from t_article where 1=1 and id =#{0}
  	</select>
- 
+ 	
+ 	<select id="selectPageList" parameterType="com.elevenstyle.model.Article" resultType="com.elevenstyle.model.Article">
+ 	  select * from t_article where 1=1
+ 	  <if test="userId !=null and userId !=''">
+ 	    and userId =#{userId}
+ 	  </if>
+ 	  <if test="typeName !=null and typeName !=''">
+ 	    and typeName =#{typeName}
+ 	  </if>
+ 	  <if test="top !=null and top !=''">
+ 	    and top =#{top}
+ 	  </if>
+ 	  <if test="readCount !=null and readCount !=''">
+ 	    and readCount =#{readCount}
+ 	  </if>
+ 	  <if test="shareCount !=null and shareCount !=''">
+ 	    and shareCount =#{shareCount}
+ 	  </if>
+ 	  order by createTime desc limit #{offset},#{pageSize}
+ 	</select>
+ 	
+ 	<select id="selectPageCount" parameterType="com.elevenstyle.model.Article" resultType="java.lang.Integer">
+ 	  select count(*) from t_article where 1=1
+ 	  <if test="userId !=null and userId !=''">
+ 	    and userId =#{userId}
+ 	  </if>
+ 	  <if test="typeName !=null and typeName !=''">
+ 	    and typeName =#{typeName}
+ 	  </if>
+ 	  <if test="top !=null and top !=''">
+ 	    and top =#{top}
+ 	  </if>
+ 	  <if test="readCount !=null and readCount !=''">
+ 	    and readCount =#{readCount}
+ 	  </if>
+ 	  <if test="shareCount !=null and shareCount !=''">
+ 	    and shareCount =#{shareCount}
+ 	  </if>
+ 	</select>
+ 	
 </mapper>

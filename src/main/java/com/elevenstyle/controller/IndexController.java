@@ -30,8 +30,19 @@ public class IndexController {
 	private GetLoginUserDetail getLoginUserDetail;
 	
 	@RequestMapping("/")
-	public String index() {
-		return "index";
+	public String index(HttpSession session) {
+		try {
+			//获取认证用户信息
+			SysUser sysUser = getLoginUserDetail.getSysUserDetail();
+				if(sysUser!=null) {
+					String email = sysUser.getEmail();
+					User user = userService.getUserInfo(email);
+					session.setAttribute("userId", user.getId());
+				}
+			} catch (Exception e) {
+				return "index";
+			}
+			return "index";
 	}
 	
 	@RequestMapping("/index")

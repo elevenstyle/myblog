@@ -6,19 +6,21 @@ package com.elevenstyle.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.elevenstyle.model.util.QueryModel;
+
 /**
  * @author lijie
  * @email  lijie@6mi.com
  * @time   2016年11月9日 下午3:02:29
  */
-public class Article implements Serializable{
+public class Article extends QueryModel implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private String id;
 	private String title;
 	private String contents;
 	private String image;
@@ -30,10 +32,10 @@ public class Article implements Serializable{
 	private Integer readCount;
 	private Integer shareCount;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {

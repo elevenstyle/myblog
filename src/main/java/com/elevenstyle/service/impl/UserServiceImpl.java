@@ -1,4 +1,4 @@
-package com.elevenstyle.service.Impl;
+package com.elevenstyle.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

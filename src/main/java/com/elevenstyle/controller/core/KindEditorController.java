@@ -1,4 +1,4 @@
-package com.elevenstyle.common;
+package com.elevenstyle.controller.core;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,7 +44,7 @@ public class KindEditorController {
 	public JSONObject upLoad(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		JSONObject result = new JSONObject();
 		Random rd = new Random();
-		String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+ (10+rd.nextInt(88));
+		String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+ (10+rd.nextInt(89));
 		CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver(
                 request.getSession().getServletContext());
 		if(multipartResolver.isMultipart(request)) {
