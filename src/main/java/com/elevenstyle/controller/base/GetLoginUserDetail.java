@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.elevenstyle.controller.core;
+package com.elevenstyle.controller.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.elevenstyle.controller.manage.article;
 
 import java.util.ArrayList;
@@ -10,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,16 +33,20 @@ public class ArticleController {
 	private static final String page_add = "/manage/article/add";
 	private static final String page_list = "/manage/article/list";
 	
-	//我的文章页面
+	//文章页面
 	@RequestMapping("list")
 	public String list(HttpServletRequest request, HttpServletResponse response, Article e, HttpSession session) throws Exception {
 		String stUserId = session.getAttribute("userId").toString();
 		Long userId = Long.valueOf(stUserId);
 		e.setUserId(userId);
-		e.setOffset(0);
-		e.setPageSize(10);
+		if(StringUtils.isEmpty(e.getPageNo().toString())||StringUtils.isEmpty(e.getPageSize().toString())) {
+			e.setOffset(0);
+			e.setPageSize(10);
+		} else {
+			e.setOffset((e.getPageNo()-1)*e.getPageSize());
+		}
 		QueryModel page = articleService.selectPageList(e);
-		request.setAttribute("pager", page);
+		request.setAttribute("page", page);
 		return page_list;
 	}
 	//新增页面跳转

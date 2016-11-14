@@ -18,11 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.elevenstyle.common.config.CustomAuthenticationProvider;
 import com.elevenstyle.common.config.CustomUserDetailService;
-import com.elevenstyle.controller.core.BaseController;
+import com.elevenstyle.controller.base.BaseController;
 import com.elevenstyle.service.UserService;
 
 @Controller
-public class LoginController extends BaseController{
+public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	

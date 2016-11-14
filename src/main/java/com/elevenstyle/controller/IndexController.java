@@ -17,7 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.elevenstyle.controller.core.GetLoginUserDetail;
+
+import com.elevenstyle.controller.base.GetLoginUserDetail;
 import com.elevenstyle.model.User;
 import com.elevenstyle.model.util.SysUser;
 import com.elevenstyle.service.UserService;

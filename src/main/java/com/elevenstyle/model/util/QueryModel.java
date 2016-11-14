@@ -9,11 +9,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * 页面查询模型
  * @author lijie
  * @email  lijie@6mi.com
  * @time   2016年11月14日 下午2:35:16
  */
-public class QueryModel {
+public class QueryModel implements ClearBean{
 	
 	private String id;
 	private Integer pageNo;
@@ -23,6 +24,22 @@ public class QueryModel {
 	private Date endTime;
 	private List list = new ArrayList(); // 分页集合列表
 	private Integer total; // 总数
+	private String pageUrl;
+	private Integer pagerSize; //总页数
+	
+	@Override
+	public void clear() {
+		id=null;
+		pageNo=null;
+		offset=null;
+		pageSize=null;
+		startTime=null;
+		endTime=null;
+		list.clear();
+		total=null;
+		pageUrl=null;
+		pagerSize=null;
+	}
 	
 	public String getId() {
 		return id;
@@ -71,6 +88,18 @@ public class QueryModel {
 	}
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+	public String getPageUrl() {
+		return pageUrl;
+	}
+	public void setPageUrl(String pageUrl) {
+		this.pageUrl = pageUrl;
+	}
+	public Integer getPagerSize() {
+		return pagerSize;
+	}
+	public void setPagerSize(Integer pagerSize) {
+		this.pagerSize = pagerSize;
 	}
 	
 }
