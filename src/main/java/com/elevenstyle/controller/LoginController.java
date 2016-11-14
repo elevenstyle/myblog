@@ -16,10 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.elevenstyle.common.config.CustomAuthenticationProvider;
+import com.elevenstyle.common.config.CustomUserDetailService;
 import com.elevenstyle.controller.core.BaseController;
 import com.elevenstyle.service.UserService;
-import com.elevenstyle.util.config.CustomAuthenticationProvider;
-import com.elevenstyle.util.config.CustomUserDetailService;
 
 @Controller
 public class LoginController extends BaseController{

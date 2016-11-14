@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elevenstyle.mapper.ArticleMapper">
+ 	<insert id="insert" parameterType="com.elevenstyle.model.Article" useGeneratedKeys="true" keyProperty="id">
+ 	  insert into t_article (id,title,contents,abstracts,typeName,createTime,userId
+ 	  <if test="image !=null and image !=''">
+ 	    ,image
+ 	  </if>
+ 	  <if test="readCount !=null and readCount !=''">
+ 	    ,readCount
+ 	  </if>
+ 	  <if test="shareCount !=null and shareCount !=''">
+ 	    ,shareCount
+ 	  </if>
+ 	  )
+ 	  values (id,#{title},#{contents},#{abstracts},#{typeName},now(),#{userId}
+ 	  <if test="image !=null and image !=''">
+ 	    ,#{image}
+ 	  </if>
+ 	  <if test="readCount !=null and readCount !=''">
+ 	    ,#{readCount}
+ 	  </if>
+ 	  <if test="shareCount !=null and shareCount !=''">
+ 	    ,#{shareCount}
+ 	  </if>
+ 	  )
+ 	</insert>
+ 
+ 	<update id="updateById" parameterType="com.elevenstyle.model.Article">
+ 		
+ 	</update>
+ 
+ 	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.Article">
+ 	</select>
+ 
+</mapper>

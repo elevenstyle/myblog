@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="/manage/base/base :: headBase">
+	</head>
+	<body class="hold-transition skin-blue sidebar-mini">
+	  <div class="wrapper">
+		<header class="main-header" th:include="/manage/base/base :: headerBase">
+		</header>
+		<aside class="main-sidebar" th:include="/manage/base/base :: asideBase">
+		</aside>
+        <!-- 页面内容 -->
+		<div class="content-wrapper">
+			<form action="add" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="userId" th:value="${session.userId}"/>
+				<section class="content-header">
+					<h1>新增文章</h1>
+				</section>
+				<section class="content">
+					<div class="box">
+					  <div class="box-header with-border">
+					      <span>分类:</span>
+		            	  <select name="typeName">
+		                	<option>教程</option>
+		                	<option>原创</option>
+		            	  </select>
+		            	  <span>&nbsp;&nbsp;&nbsp;&nbsp;标题:</span>
+		            	  <input type="text" name="title" style="width:500px"/>
+					  </div>
+		        	  <div class="box-body">
+		        	    <div style="margin:auto;">
+		        		  <textarea id="editor_id" name="contents" rows="30" cols="160">
+							  &lt;strong&gt;HTML内容&lt;/strong&gt;
+						  </textarea>
+						</div>
+		        	  </div>
+		        	  <div class="box-footer" align="center">
+				  	    <button type="submit" class="btn btn-primary">提交</button>
+					  </div>
+		        	</div>
+				</section>
+			</form>
+        </div>
+      	<footer class="main-footer" th:include="/manage/base/base :: footerAndJsBase">
+      	</footer>
+      </div>
+      <script charset="utf-8" src="../../js/kindeditor/kindeditor.js"></script>
+	  <script charset="utf-8" src="../../js/kindeditor/lang/zh-CN.js"></script>
+	  <script>
+        KindEditor.ready(function(K) {
+                K.create('#editor_id', {
+                    uploadJson : '/editor/upload',
+                    fileManagerJson : '../jsp/file_manager_json.jsp',
+                    allowFileManager : true
+        	});
+        });
+	  </script>
+	</body>
+</html>

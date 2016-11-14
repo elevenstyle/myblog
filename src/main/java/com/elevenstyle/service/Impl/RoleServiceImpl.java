@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.elevenstyle.service.Impl;
 
 import java.util.List;
