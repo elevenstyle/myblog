@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elevenstyle.mapper.ArticleMapper">
- 	<insert id="insert" parameterType="com.elevenstyle.model.Article" useGeneratedKeys="true" keyProperty="id">
+ 	<insert id="insert" parameterType="com.elevenstyle.model.entity.Article" useGeneratedKeys="true" keyProperty="id">
  	  insert into t_article (id,title,contents,abstracts,typeName,createTime,userId
  	  <if test="image !=null and image !=''">
  	    ,image
@@ -26,15 +26,15 @@
  	  )
  	</insert>
  
- 	<update id="updateById" parameterType="com.elevenstyle.model.Article">
+ 	<update id="updateById" parameterType="com.elevenstyle.model.entity.Article">
  		
  	</update>
  
- 	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.Article">
+ 	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.entity.Article">
  	  select * from t_article where 1=1 and id =#{0}
  	</select>
  	
- 	<select id="selectPageList" parameterType="com.elevenstyle.model.Article" resultType="com.elevenstyle.model.Article">
+ 	<select id="selectPageList" parameterType="com.elevenstyle.model.entity.Article" resultType="com.elevenstyle.model.entity.Article">
  	  select * from t_article where 1=1
  	  <if test="userId !=null and userId !=''">
  	    and userId =#{userId}
@@ -54,7 +54,7 @@
  	  order by createTime desc limit #{offset},#{pageSize}
  	</select>
  	
- 	<select id="selectPageCount" parameterType="com.elevenstyle.model.Article" resultType="java.lang.Integer">
+ 	<select id="selectPageCount" parameterType="com.elevenstyle.model.entity.Article" resultType="java.lang.Integer">
  	  select count(*) from t_article where 1=1
  	  <if test="userId !=null and userId !=''">
  	    and userId =#{userId}

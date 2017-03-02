@@ -1,28 +1,35 @@
 /**
  * 
  */
-package com.elevenstyle.model.util;
+package com.elevenstyle.model.entity;
 
-import com.elevenstyle.model.entity.User;
+import java.io.Serializable;
 
-/**	用户信息（包含Role）
+/**
  * @author lijie
  * @email  lijie@6mi.com
- * @time   2016年11月8日 上午10:24:58
+ * @time   2016年11月7日 上午10:42:34
  */
-public class SysUser extends User{
+public class Role implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Integer id;
 	private String role_name;
 	private String role_desc;
 	private String role_dbPrivilege;
 	private String status;
 	private String role_type;
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getRole_name() {
 		return role_name;
 	}

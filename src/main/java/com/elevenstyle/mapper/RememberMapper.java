@@ -3,7 +3,7 @@
  */
 package com.elevenstyle.mapper;
 
-import com.elevenstyle.model.Remember;
+import com.elevenstyle.model.entity.Remember;
 
 /**
  * @author lijie

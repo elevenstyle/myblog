@@ -20,7 +20,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.stereotype.Component;
 
-import com.elevenstyle.model.Role;
+import com.elevenstyle.model.entity.Role;
 import com.elevenstyle.service.RoleService;
 
 /**

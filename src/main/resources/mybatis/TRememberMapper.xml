@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elevenstyle.mapper.RememberMapper">
- 	<insert id="insert" parameterType="com.elevenstyle.model.Remember" useGeneratedKeys="true" keyProperty="id">
+ 	<insert id="insert" parameterType="com.elevenstyle.model.entity.Remember" useGeneratedKeys="true" keyProperty="id">
  		insert into t_remember (id,email,series,date,tokenValue)
  		values (id,#{email},#{series},#{date},#{tokenValue})
  	</insert>
  
- 	<update id="updateById" parameterType="com.elevenstyle.model.Remember">
+ 	<update id="updateById" parameterType="com.elevenstyle.model.entity.Remember">
  		update t_remember set 
  		<if test="email !=null and email !=''">
  			email=#{email}
@@ -23,7 +23,7 @@
  		where id=#{id}
  	</update>
  
- 	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.Remember">
+ 	<select id="selectById" parameterType="java.lang.String" resultType="com.elevenstyle.model.entity.Remember">
  		select * from t_remember where series =#{0}
  	</select>
  	

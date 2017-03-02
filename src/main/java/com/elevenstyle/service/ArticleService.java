@@ -1,6 +1,6 @@
 package com.elevenstyle.service;
 
-import com.elevenstyle.model.Article;
+import com.elevenstyle.model.entity.Article;
 import com.elevenstyle.service.base.BaseService;
 
 /**

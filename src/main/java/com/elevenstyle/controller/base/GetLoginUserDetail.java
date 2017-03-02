@@ -8,8 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.elevenstyle.model.Role;
-import com.elevenstyle.model.User;
+import com.elevenstyle.model.entity.Role;
+import com.elevenstyle.model.entity.User;
 import com.elevenstyle.model.util.SysUser;
 import com.elevenstyle.service.RoleService;
 import com.elevenstyle.service.UserService;

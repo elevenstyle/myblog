@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.elevenstyle.model.Menu;
+import com.elevenstyle.model.entity.Menu;
 
 /**
  * @author lijie

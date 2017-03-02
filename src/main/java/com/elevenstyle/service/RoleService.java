@@ -5,7 +5,7 @@ package com.elevenstyle.service;
 
 import java.util.List;
 
-import com.elevenstyle.model.Role;
+import com.elevenstyle.model.entity.Role;
 
 /**
  * @author lijie

@@ -1,6 +1,6 @@
 package com.elevenstyle.mapper;
 
-import com.elevenstyle.model.User;
+import com.elevenstyle.model.entity.User;
 
 
 

@@ -1,7 +1,7 @@
 package com.elevenstyle.service;
 
 
-import com.elevenstyle.model.User;
+import com.elevenstyle.model.entity.User;
 
 public interface UserService {
 	User getUserInfo(String email);

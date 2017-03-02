@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.elevenstyle.mapper.UserMapper;
-import com.elevenstyle.model.User;
+import com.elevenstyle.model.entity.User;
 import com.elevenstyle.service.UserService;
 @Service
 @Transactional

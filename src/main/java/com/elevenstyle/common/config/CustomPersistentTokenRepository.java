@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Component;
 
-import com.elevenstyle.model.Remember;
+import com.elevenstyle.model.entity.Remember;
 import com.elevenstyle.service.RememberService;
 
 /**

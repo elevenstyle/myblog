@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.elevenstyle.mapper.RememberMapper;
-import com.elevenstyle.model.Remember;
+import com.elevenstyle.model.entity.Remember;
 import com.elevenstyle.service.RememberService;
 
 /**

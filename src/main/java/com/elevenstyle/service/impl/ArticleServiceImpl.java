@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.elevenstyle.mapper.ArticleMapper;
-import com.elevenstyle.model.Article;
+import com.elevenstyle.model.entity.Article;
 import com.elevenstyle.model.util.QueryModel;
 import com.elevenstyle.service.ArticleService;
 

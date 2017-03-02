@@ -1,25 +1,24 @@
 package com.elevenstyle.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elevenstyle.common.config.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.elevenstyle.controller.base.GetLoginUserDetail;
-import com.elevenstyle.model.User;
+import com.elevenstyle.model.entity.User;
 import com.elevenstyle.model.util.SysUser;
 import com.elevenstyle.service.UserService;
 @Controller
@@ -29,6 +28,8 @@ public class IndexController {
 	private UserService userService;
 	@Autowired
 	private GetLoginUserDetail getLoginUserDetail;
+    @Autowired
+    private CustomAuthenticationProvider customAuthenticationProvider;
 	
 	@RequestMapping("/")
 	public String index(HttpSession session) {
@@ -61,6 +62,28 @@ public class IndexController {
 		}
 		return "index";
 	}
+
+    /**
+     * 用户登录页面跳转
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/login")
+    public String login(HttpSession session, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) throws Exception {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, password);
+        try {
+            Authentication authentication = customAuthenticationProvider.authenticate(authRequest); //调用loadUserByUsername
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            session = request.getSession();
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // 这个非常重要，否则验证后将无法登陆
+            return "redirect:index";
+        } catch (AuthenticationException ex) {
+            model.addAttribute("msg", "用户名或密码错误");
+            return "login";
+        }
+    }
 	
 	@RequestMapping("/register")
 	public String register(HttpSession session, HttpServletRequest request, Model model) throws Exception {

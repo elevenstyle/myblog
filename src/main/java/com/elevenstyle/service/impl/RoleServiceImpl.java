@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.elevenstyle.mapper.RoleMapper;
-import com.elevenstyle.model.Role;
+import com.elevenstyle.model.entity.Role;
 import com.elevenstyle.service.RoleService;
 
 /**

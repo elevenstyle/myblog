@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elevenstyle.mapper.RoleMapper">
- 	<select id="selectRoleById" parameterType="java.lang.Integer" resultType="com.elevenstyle.model.Role">
+ 	<select id="selectRoleById" parameterType="java.lang.Integer" resultType="com.elevenstyle.model.entity.Role">
  		select * from t_role where 1=1 and id=#{0}
  	</select>
  	
- 	<select id="selectByResourceURI" parameterType="java.lang.String" resultType="com.elevenstyle.model.Role">
+ 	<select id="selectByResourceURI" parameterType="java.lang.String" resultType="com.elevenstyle.model.entity.Role">
  		select * from t_role where id in (
 			select rid from t_menu m left join t_role_resources rr on m.id = rr.mid where m.url =#{0}
 				)

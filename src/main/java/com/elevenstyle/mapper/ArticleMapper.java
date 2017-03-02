@@ -4,7 +4,7 @@
 package com.elevenstyle.mapper;
 
 import com.elevenstyle.mapper.base.BaseMapper;
-import com.elevenstyle.model.Article;
+import com.elevenstyle.model.entity.Article;
 
 /**
  * @author lijie

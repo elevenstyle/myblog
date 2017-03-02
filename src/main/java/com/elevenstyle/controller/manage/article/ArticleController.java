@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.elevenstyle.model.Article;
+import com.elevenstyle.model.entity.Article;
 import com.elevenstyle.model.util.QueryModel;
 import com.elevenstyle.service.ArticleService;
 
